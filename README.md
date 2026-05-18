@@ -33,7 +33,12 @@ Add a beautiful **live database size column** and handy client-facing **SQL back
 
 You can install this plugin directly from your Pelican panel's built-in **Plugin Manager**.
 
-If you prefer to install it manually, copy the folder to `plugins/database-tools` and run:
+If you prefer to install it manually:
+
+1. Go to the [Releases](https://github.com/laalaalaee/database-tools/releases) page.
+2. Download the **`database-tools.zip`** asset (do **not** download the raw "Source code" zip!).
+3. Extract the contents and upload the `database-tools` folder to your panel's `plugins/database-tools` directory.
+4. Run the following commands inside your panel's root directory:
 
 ```bash
 cd /var/www/pelican
