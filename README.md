@@ -8,6 +8,13 @@
 
 ---
 
+<!-- Drag and drop your screenshot into GitHub README editor and replace this URL! -->
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/placeholder-image-url" alt="Advanced Database Manager Showcase" width="100%">
+</p>
+
+---
+
 Add a beautiful **live database size column** and handy client-facing **SQL backup, download, restore, and delete actions** directly to the server database page in Pelican Panel.
 
 ---
