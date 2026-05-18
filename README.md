@@ -8,9 +8,9 @@
 
 ---
 
-<!-- Drag and drop your screenshot into GitHub README editor and replace this URL! -->
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/placeholder-image-url" alt="Advanced Database Manager Showcase" width="100%">
+  <img src="https://github.com/user-attachments/assets/34080af1-c1f3-4183-b05d-9f6a9d3204b1" alt="Advanced Database Manager Showcase" width="100%"/>
+>
 </p>
 
 ---
