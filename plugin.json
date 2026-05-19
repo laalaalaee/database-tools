@@ -7,7 +7,7 @@
     "category": "plugin",
     "url": "https://github.com/laalaalaee/database-tools",
     "update_url": null,
-    "namespace": "Laalaalaee\\DatabaseTools",
+    "namespace": "Pelican\\DatabaseTools",
     "class": "DatabaseToolsPlugin",
     "panels": [
         "server"
