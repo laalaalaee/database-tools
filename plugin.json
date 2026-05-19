@@ -5,18 +5,13 @@
     "version": "1.0.0",
     "description": "Adds live database size display plus SQL backup/restore actions for server databases.",
     "category": "plugin",
-    "url": null,
+    "url": "https://github.com/laalaalaee/database-tools",
     "update_url": null,
-    "namespace": "Pelican\\DatabaseTools",
+    "namespace": "Laalaalaee\\DatabaseTools",
     "class": "DatabaseToolsPlugin",
     "panels": [
         "server"
     ],
     "panel_version": null,
-    "composer_packages": null,
-    "meta": {
-        "status": "enabled",
-        "status_message": null,
-        "load_order": 0
-    }
+    "composer_packages": null
 }
