@@ -1,6 +1,6 @@
 <?php
 
-namespace Pelican\DatabaseTools\Models;
+namespace Laalaalaee\DatabaseTools\Models;
 
 use App\Models\Database;
 use App\Models\Server;

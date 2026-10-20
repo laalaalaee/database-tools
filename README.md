@@ -1,8 +1,8 @@
 # ⚡ Advanced Database Manager for Pelican Panel
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Pelican_Panel-v1.0.0--beta33-blue?style=for-the-badge&logo=laravel&logoColor=white&color=6C5CE7" alt="Pelican Version">
-  <img src="https://img.shields.io/badge/PHP-8.2%2B-blue?style=for-the-badge&logo=php&logoColor=white&color=a855f7" alt="PHP Version">
+  <img src="https://img.shields.io/badge/Pelican_Panel-v1.0.0--rc.1-blue?style=for-the-badge&logo=laravel&logoColor=white&color=6C5CE7" alt="Pelican Version">
+  <img src="https://img.shields.io/badge/PHP-8.4%2B-blue?style=for-the-badge&logo=php&logoColor=white&color=a855f7" alt="PHP Version">
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge&color=2ecc71" alt="License">
 </p>
 
@@ -30,8 +30,10 @@ Add a beautiful **live database size column** and handy client-facing **SQL back
 
 ## 🛠️ Requirements
 
+- Tested on Pelican Panel v1.0.0-rc.1 (which needs PHP 8.4).
 - `mysqldump` and `mysql` binaries available on the Panel host.
 - Panel host can connect to the configured database hosts.
+- **Docker:** the official Pelican panel image does not include `mysqldump` or `mysql`. Install them in the container first, for example `apk add --no-cache mariadb-client` (this is lost when the container is recreated, so add it to your own image or startup if you need it to stay).
 
 ---
 
@@ -82,7 +84,7 @@ Physical backup files are saved securely under your Pelican private storage:
 
 - **What users see:** In the Pelican Panel UI, this plugin is beautifully labeled as **Advanced Database Manager**.
 - **Under the hood:** The folder stays named `plugins/database-tools` internally to make sure it plays nicely with Pelican's internal plugin loading system and Linux file paths.
-- **Security & Permissions:** Don't worry about access control! All backup actions (create, download, restore, or delete) automatically check and respect standard Pelican user database permissions.
+- **Security & Permissions:** Backup actions follow the server's database permissions: creating and downloading a backup needs `database.read`, restoring needs `database.update`, and deleting a backup needs `database.delete`.
 
 ---
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pelican\DatabaseTools\Providers;
+namespace Laalaalaee\DatabaseTools\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Pelican\DatabaseTools\Http\Controllers\DatabaseBackupDownloadController;
+use Laalaalaee\DatabaseTools\Http\Controllers\DatabaseBackupDownloadController;
 
 class DatabaseToolsPluginProvider extends ServiceProvider
 {
@@ -31,7 +31,7 @@ class DatabaseToolsPluginProvider extends ServiceProvider
                 \Illuminate\Support\Facades\Storage::disk($disk)->deleteDirectory($directory);
 
                 if (\Illuminate\Support\Facades\Schema::hasTable('database_backups')) {
-                    \Pelican\DatabaseTools\Models\DatabaseBackup::query()->where('database_id', $database->id)->delete();
+                    \Laalaalaee\DatabaseTools\Models\DatabaseBackup::query()->where('database_id', $database->id)->delete();
                 }
             });
         }

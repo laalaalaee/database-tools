@@ -1,6 +1,6 @@
 <?php
 
-namespace Pelican\DatabaseTools\Services;
+namespace Laalaalaee\DatabaseTools\Services;
 
 use App\Models\Database;
 use App\Models\User;
@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Pelican\DatabaseTools\Models\DatabaseBackup;
+use Laalaalaee\DatabaseTools\Models\DatabaseBackup;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 
 class DatabaseBackupService
@@ -108,7 +108,7 @@ class DatabaseBackupService
             $command = $this->buildRestoreCommand($backup->database, $restorePath);
             $result = Process::timeout((int) config('database-tools.restore_timeout', 300))
                 ->env($env)
-                ->run(['bash', '-c', $command]);
+                ->run(['sh', '-c', $command]);
 
             if ($result->failed()) {
                 throw new Exception($result->errorOutput() ?: 'Database restore failed.');

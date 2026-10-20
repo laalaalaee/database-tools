@@ -1,6 +1,6 @@
 <?php
 
-namespace Pelican\DatabaseTools\Services;
+namespace Laalaalaee\DatabaseTools\Services;
 
 use App\Models\Database;
 use Exception;

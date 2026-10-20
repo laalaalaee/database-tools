@@ -1,6 +1,6 @@
 <?php
 
-namespace Pelican\DatabaseTools;
+namespace Laalaalaee\DatabaseTools;
 
 use App\Enums\SubuserPermission;
 use App\Enums\TablerIcon;
@@ -21,9 +21,9 @@ use Filament\Panel;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Schema;
-use Pelican\DatabaseTools\Models\DatabaseBackup;
-use Pelican\DatabaseTools\Services\DatabaseBackupService;
-use Pelican\DatabaseTools\Services\DatabaseSizeService;
+use Laalaalaee\DatabaseTools\Models\DatabaseBackup;
+use Laalaalaee\DatabaseTools\Services\DatabaseBackupService;
+use Laalaalaee\DatabaseTools\Services\DatabaseSizeService;
 
 class DatabaseToolsPlugin implements Plugin
 {
@@ -60,7 +60,7 @@ class DatabaseToolsPlugin implements Plugin
                             ->label('Create Backup')
                             ->icon(TablerIcon::DatabaseExport)
                             ->color('primary')
-                            ->authorize(fn (Database $database) => user()?->can(SubuserPermission::BackupCreate, $database->server))
+                            ->authorize(fn (Database $database) => user()?->can(SubuserPermission::DatabaseRead, $database->server))
                             ->action(function (Database $database, DatabaseBackupService $service) {
                                 if (!self::databaseBackupsTableExists()) {
                                     Notification::make()
@@ -93,7 +93,7 @@ class DatabaseToolsPlugin implements Plugin
                             ->label('Download Backup')
                             ->icon(TablerIcon::Download)
                             ->color('primary')
-                            ->authorize(fn (Database $database) => user()?->can(SubuserPermission::BackupDownload, $database->server))
+                            ->authorize(fn (Database $database) => user()?->can(SubuserPermission::DatabaseRead, $database->server))
                             ->schema([
                                 Select::make('backup_id')
                                     ->label('Backup')
@@ -121,7 +121,7 @@ class DatabaseToolsPlugin implements Plugin
                             ->icon(TablerIcon::DatabaseImport)
                             ->color('warning')
                             ->requiresConfirmation()
-                            ->authorize(fn (Database $database) => user()?->can(SubuserPermission::BackupRestore, $database->server))
+                            ->authorize(fn (Database $database) => user()?->can(SubuserPermission::DatabaseUpdate, $database->server))
                             ->schema([
                                 Select::make('backup_id')
                                     ->label('Backup')
@@ -164,7 +164,7 @@ class DatabaseToolsPlugin implements Plugin
                             ->icon(TablerIcon::Trash)
                             ->color('danger')
                             ->requiresConfirmation()
-                            ->authorize(fn (Database $database) => user()?->can(SubuserPermission::BackupDelete, $database->server))
+                            ->authorize(fn (Database $database) => user()?->can(SubuserPermission::DatabaseDelete, $database->server))
                             ->schema([
                                 Select::make('backup_id')
                                     ->label('Backup')
