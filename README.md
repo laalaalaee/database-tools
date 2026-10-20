@@ -30,7 +30,7 @@ Add a beautiful **live database size column** and handy client-facing **SQL back
 
 ## 🛠️ Requirements
 
-- Tested on Pelican Panel v1.0.0-rc.1 (which needs PHP 8.4).
+- Tested on Pelican Panel v1.0.0-rc.1 and v1.0.0-beta38. rc.1 requires PHP 8.4.
 - `mysqldump` and `mysql` binaries available on the Panel host.
 - Panel host can connect to the configured database hosts.
 - **Docker:** the official Pelican panel image does not include `mysqldump` or `mysql`. Install them in the container first, for example `apk add --no-cache mariadb-client` (this is lost when the container is recreated, so add it to your own image or startup if you need it to stay).
