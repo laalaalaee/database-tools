@@ -105,10 +105,20 @@ class DatabaseBackupService
                 $env['MYSQL_PWD'] = $backup->database->host->password;
             }
 
-            $command = $this->buildRestoreCommand($backup->database, $restorePath);
-            $result = Process::timeout((int) config('database-tools.restore_timeout', 300))
-                ->env($env)
-                ->run(['sh', '-c', $command]);
+            $command = $this->buildRestoreCommand($backup->database);
+            $input = fopen($restorePath, 'rb');
+            if (!$input) {
+                throw new Exception('Backup file could not be read.');
+            }
+
+            try {
+                $result = Process::timeout((int) config('database-tools.restore_timeout', 300))
+                    ->env($env)
+                    ->input($input)
+                    ->run($command);
+            } finally {
+                fclose($input);
+            }
 
             if ($result->failed()) {
                 throw new Exception($result->errorOutput() ?: 'Database restore failed.');
@@ -179,20 +189,17 @@ class DatabaseBackupService
         ];
     }
 
-    private function buildRestoreCommand(Database $database, string $inputPath): string
+    private function buildRestoreCommand(Database $database): array
     {
         $host = $database->host;
-        $arguments = [
+
+        return [
+            (string) config('database-tools.mysql_binary', 'mysql'),
             '--host=' . $host->host,
             '--port=' . $host->port,
             '--user=' . $host->username,
             $database->database,
         ];
-
-        $binary = escapeshellcmd((string) config('database-tools.mysql_binary', 'mysql'));
-        $argumentString = implode(' ', array_map('escapeshellarg', $arguments));
-
-        return sprintf('%s %s < %s', $binary, $argumentString, escapeshellarg($inputPath));
     }
 
     private function buildStoragePath(Database $database, string $fileName): string
