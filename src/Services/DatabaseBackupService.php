@@ -18,7 +18,7 @@ class DatabaseBackupService
         $tempDirectory = (new TemporaryDirectory())->create();
         $timestamp = now()->format('Ymd_His');
         $name = sprintf('%s-%s', $database->database, $timestamp);
-        $fileName = Str::slug($name) . '.sql';
+        $fileName = Str::slug($name . '-' . Str::random(6)) . '.sql';
         $dumpPath = $tempDirectory->path($fileName);
         $disk = (string) config('database-tools.disk', 'local');
         $path = $this->buildStoragePath($database, $fileName);
