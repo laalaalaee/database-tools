@@ -7,7 +7,7 @@
     "category": "plugin",
     "api_version": 1,
     "url": "https://github.com/laalaalaee/database-tools",
-    "update_url": null,
+    "update_url": "https://hub.pelican.dev/plugins/database-tools/update.json",
     "namespace": "Laalaalaee\\DatabaseTools",
     "class": "DatabaseToolsPlugin",
     "panels": [
